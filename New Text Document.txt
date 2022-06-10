@@ -1,0 +1,54 @@
+db.students.find(
+  {$and: [{ gender: 'female'},{ club: 'cooking'}]}
+)
+/////////////////////////////////////
+db.students.find(
+  {'gpa.0.gpa': {$lt: 3}}
+)
+/////////////////////////////////////
+db.students.find(
+  {$and: [{ 'gpa.0.gpa': { $lt: 3 }},{ club: 'piano'}]}
+)
+//////////////////////////////////////////////////////////////////////
+[{
+ $unwind: {
+  path: '$club'
+ }
+}, {
+ $group: {
+  _id: '$club',
+  Total: {
+   $sum: 1
+  }
+ }
+}, {
+ $sort: {
+  Total: -1
+ }
+}]
+/////////////////////////////////////////////////////////////////////
+[{
+ $match: {
+  'gpa.grade': 9
+ }
+}, {
+ $project: {
+  firstname: '$firstname',
+  lastname: '$lastname',
+  'class': '$class',
+  age: {
+   $dateDiff: {
+    startDate: {
+     $dateFromString: {
+      dateString: '$birthday'
+     }
+    },
+    endDate: ISODate('2022-06-08T07:44:38.228Z'),
+    unit: 'year'
+   }
+  },
+  GPAX: {
+   $avg: '$gpa.gpa'
+  }
+ }
+}]
