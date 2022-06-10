@@ -1,0 +1,25 @@
+[{
+    "id": "1",
+    "name": "table",
+    "amount": 10,
+    "price": 5000
+  },
+  {
+    "id": "2",
+    "name": "bed",
+    "amount": 10,
+    "price": 20000
+  },
+  {
+    "id": "3",
+    "name": "chair",
+    "amount": 10,
+    "price": 1200
+  },
+  {
+    "id": "4",
+    "name": "Hanger",
+    "amount": 10,
+    "price": 50
+  }
+]
