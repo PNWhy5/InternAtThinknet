@@ -1,0 +1,22 @@
+query {
+  getAllMedia {
+    data {
+     ... on Blog {
+      	title
+      	author
+      	estimatedReadTime
+    	}
+    	... on Book {
+        title
+        author
+        totalPage
+        ISBN
+    	}
+    	... on Video {
+        title
+        owner
+        totalTime
+    	} 
+    }
+  }
+}
