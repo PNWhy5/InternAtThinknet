@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+### MongoDB Container #######################################
+    mongo:
+        image: registry.thinknet.co.th/sredev/mongo:4.4
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./data/mongo:/data/db
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=homestead
+            - MONGO_INITDB_ROOT_PASSWORD=secret
+
+### Add more Containers below ###############################
+# use [ docker network create microservicenetwork ] เพื่อสร้าง network ขึ้นมาก่อน
+networks:
+    default:
+        external:
+            name: microservicenetwork
